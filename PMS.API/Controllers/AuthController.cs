@@ -20,7 +20,7 @@ namespace PMS.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        //ApiController subs the need for [FromBody] attribute for method parameter's inference from request and ModelState validation
+        //ApiController substitues the need for [FromBody] attribute for method parameter's inference from request and ModelState validation
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _config;
 
@@ -33,6 +33,7 @@ namespace PMS.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserDto userDto)
         {
+            //ApiController attribute makes the passed arguments auto infer from request body rather than use [FromBody] arg attribute
             if (await _repo.UserExists(userDto.UserName.ToLower()))
                 return BadRequest("User already exists");
 
